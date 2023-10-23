@@ -1,0 +1,54 @@
+{
+  "compilerOptions": {
+    /* Basic Options */
+    "target": "ES6",
+    "module": "ES6",
+    "lib": [
+      "es6",
+      "esnext",
+      "dom"
+    ],
+    "outDir": "dist",
+    "rootDir": "src",
+    "allowUmdGlobalAccess": true,
+
+    /* Strict Type-Checking Options */
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "isolatedModules": true,
+
+    /* Additional Checks */
+    "noImplicitReturns": true,
+
+    /* Module Resolution Options */
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "typeRoots": [
+      "node_modules/@types",
+      "types"
+    ],
+    "paths": {},
+
+    /* Other Options */
+    "forceConsistentCasingInFileNames": true,
+    "preserveConstEnums": true,
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "useDefineForClassFields": true,
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "noImplicitOverride": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["src", ".eslintrc.js"],
+  "exclude": [
+    "node_modules",
+    "types",
+    "src/playcanvas-lib"
+  ]
+}
