@@ -1,10 +1,8 @@
 import { EntityUtils } from '../../utils/entity.utils';
+import { BlobGeneProperties } from '../../../interface/entities/blob/blob-gene-properties.interface';
 import { BlobColorHandler } from './blob-color-handler';
 import { BlobMorphTargetHandler } from './blob-morph-target-handler';
-import { BlobHeightHandler } from './blob-height-handler';
 import { BlobAgeHandler } from './blob-age-handler';
-import { BlobGeneProperties } from '../../../interface/entities/blob/blob-gene-properties.interface';
-import { BlobGene } from './blob-gene';
 
 export class BlobEntity {
     private readonly blobAssetId = 154377418;
@@ -20,8 +18,6 @@ export class BlobEntity {
     public blobMorphTargetHandler!: BlobMorphTargetHandler;
 
     public blobColorHandler!: BlobColorHandler;
-
-    public blobHeightHandler!: BlobHeightHandler;
 
     public blobAgeHandler!: BlobAgeHandler;
 
@@ -50,6 +46,7 @@ export class BlobEntity {
     public destroy(): void {
         this.entity.destroy();
         this.blobContainerEntity?.removeChild(this.entity);
+        this.blobAgeHandler.destroy();
     }
 
     public setPosition(position: pc.Vec3): void {
@@ -73,10 +70,7 @@ export class BlobEntity {
         this.blobColorHandler.setBodyColor(this.blobGeneProperties.bodyColor.value);
         this.blobColorHandler.setEyeColor(this.blobGeneProperties.eyeColor.value);
 
-        this.blobHeightHandler = new BlobHeightHandler(instance);
-        this.blobHeightHandler.setHeight(this.blobGeneProperties.height.value);
-
-        this.blobAgeHandler = new BlobAgeHandler(this.birthDate);
+        this.blobAgeHandler = new BlobAgeHandler(instance, this.birthDate, this.blobGeneProperties.height.value);
 
         this.entity = instance;
         this.blobContainerEntity?.addChild(instance);

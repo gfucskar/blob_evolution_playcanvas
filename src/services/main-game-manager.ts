@@ -1,8 +1,6 @@
 import { GameClass } from '../interface/game-class.interface';
 import { BlobManagerService } from './entities/blob/blob.manager.service';
-import { BlobGene } from './entities/blob/blob-gene';
 import { BlobGeneMergerService } from './entities/blob/blob-gene-merger.service';
-import { GENE_MERGE_OPTIONS } from '../interface/entities/blob/blob-gene-merge-options.enum';
 
 export class MainGameManager implements GameClass {
     private readonly blobGeneMergerService: BlobGeneMergerService;
@@ -15,10 +13,17 @@ export class MainGameManager implements GameClass {
     }
 
     public initialize(): void {
-        this.inheritanceTest();
+        this.agingTest();
+        // this.inheritanceTest();
     }
 
     public update(): void {}
+
+    private agingTest(): void {
+        const blobId = this.blobManagerService.createBlob(Date.now(), new pc.Vec3(0, 0, 0));
+
+        const blob = this.blobManagerService.getBlob(blobId);
+    }
 
     private inheritanceTest(): void {
         const blobAId = this.blobManagerService.createBlob(Date.now(), new pc.Vec3(0, 0, 5.5));

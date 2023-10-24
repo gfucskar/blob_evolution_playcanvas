@@ -1,9 +1,9 @@
 import { BlobGeneProperties } from '../../../interface/entities/blob/blob-gene-properties.interface';
-import { BlobGene } from './blob-gene';
 import { Color } from '../../../interface/entities/color.interface';
 import { ColorUtils } from '../../utils/color.utils';
 import { Utils } from '../../utils/utils';
 import { GENE_MERGE_OPTIONS } from '../../../interface/entities/blob/blob-gene-merge-options.enum';
+import { BlobGene } from './blob-gene';
 
 interface GeneMergeOds extends Record<GENE_MERGE_OPTIONS, number> {}
 
@@ -48,10 +48,13 @@ export class BlobGeneMergerService {
         switch (randomGeneMergeOption) {
             case GENE_MERGE_OPTIONS.PARENT_A:
                 return new BlobGene<number>(valueA, GENE_MERGE_OPTIONS.PARENT_A);
+
             case GENE_MERGE_OPTIONS.PARENT_B:
                 return new BlobGene<number>(valueB, GENE_MERGE_OPTIONS.PARENT_B);
+
             case GENE_MERGE_OPTIONS.MIX:
                 return new BlobGene<number>((valueA + valueB) / 2, GENE_MERGE_OPTIONS.MIX);
+
             case GENE_MERGE_OPTIONS.RANDOM:
                 return new BlobGene<number>(this.generateRandomHeight(), GENE_MERGE_OPTIONS.MIX);
         }
@@ -68,10 +71,13 @@ export class BlobGeneMergerService {
         switch (randomGeneMergeOption) {
             case GENE_MERGE_OPTIONS.PARENT_A:
                 return new BlobGene<number>(valueA, GENE_MERGE_OPTIONS.PARENT_A);
+
             case GENE_MERGE_OPTIONS.PARENT_B:
                 return new BlobGene<number>(valueB, GENE_MERGE_OPTIONS.PARENT_B);
+
             case GENE_MERGE_OPTIONS.MIX:
                 return new BlobGene<number>((valueA + valueB) / 2, GENE_MERGE_OPTIONS.MIX);
+
             case GENE_MERGE_OPTIONS.RANDOM:
                 return new BlobGene<number>(this.generateRandomFatness(), GENE_MERGE_OPTIONS.MIX);
         }
@@ -88,10 +94,13 @@ export class BlobGeneMergerService {
         switch (randomGeneMergeOption) {
             case GENE_MERGE_OPTIONS.PARENT_A:
                 return new BlobGene<Color>(valueA, GENE_MERGE_OPTIONS.PARENT_A);
+
             case GENE_MERGE_OPTIONS.PARENT_B:
                 return new BlobGene<Color>(valueB, GENE_MERGE_OPTIONS.PARENT_B);
+
             case GENE_MERGE_OPTIONS.MIX:
                 return new BlobGene<Color>(ColorUtils.mixColors(valueA, valueB), GENE_MERGE_OPTIONS.MIX);
+
             case GENE_MERGE_OPTIONS.RANDOM:
                 return new BlobGene<Color>(ColorUtils.generateRandomColor(), GENE_MERGE_OPTIONS.MIX);
         }
@@ -110,10 +119,13 @@ export class BlobGeneMergerService {
         switch (randomGeneMergeOption) {
             case GENE_MERGE_OPTIONS.PARENT_A:
                 return new BlobGene<Color>(valueA, GENE_MERGE_OPTIONS.PARENT_A);
+
             case GENE_MERGE_OPTIONS.PARENT_B:
                 return new BlobGene<Color>(valueB, GENE_MERGE_OPTIONS.PARENT_B);
+
             case GENE_MERGE_OPTIONS.MIX:
                 return new BlobGene<Color>(ColorUtils.mixColors(valueA, valueB), GENE_MERGE_OPTIONS.MIX);
+
             case GENE_MERGE_OPTIONS.RANDOM:
                 return new BlobGene<Color>(ColorUtils.generateRandomColor(), GENE_MERGE_OPTIONS.MIX);
         }

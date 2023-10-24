@@ -8,12 +8,7 @@ module.exports = {
         project: ['./tsconfig.json']
     },
     plugins: ['@typescript-eslint', 'prettier'],
-    extends: [
-        'airbnb-typescript',
-        'plugin:import/recommended',
-        'plugin:import/typescript',
-        'plugin:prettier/recommended'
-    ],
+    extends: ['plugin:import/recommended', 'plugin:import/typescript', 'plugin:prettier/recommended'],
     env: {
         browser: true,
         es2021: true,
